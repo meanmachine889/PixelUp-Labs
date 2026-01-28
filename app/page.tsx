@@ -1,54 +1,62 @@
 'use client'
 
 import { useState } from 'react'
-import { Sidebar } from '@/components/sidebar'
 import { StatsCards } from '@/components/stats-cards'
 import { TestTable } from '@/components/test-table'
 import { CreateTestPanel } from '@/components/create-test-panel'
 import { TestEditorPanel } from '@/components/test-editor-panel'
-import { Monitor, Plus } from 'lucide-react'
+import { Bell, ChartLine, FileText, HelpCircle, Plus } from 'lucide-react'
 
 export default function Home() {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [createTestOpen, setCreateTestOpen] = useState(false)
   const [testEditorOpen, setTestEditorOpen] = useState(false)
 
   return (
-    <div className="flex h-screen bg-background text-foreground dark">
-      <Sidebar isCollapsed={sidebarCollapsed} onToggle={setSidebarCollapsed} />
-
+    <>
       {/* Main Content */}
       <main className="flex-1 overflow-auto">
         {/* Header */}
-        <div className="bg-background border-b border-border sticky top-0 z-10">
-          <div className="px-6 py-4 flex items-center justify-between">
-            <h1 className="text-2xl font-bold">Test Suite</h1>
-            <div className="flex items-center gap-3">
+        <div className="bg-background border-b border-border sticky top-0 z-10 h-18 flex items-center justify-end px-6 gap-2">
+          <button className="p-2 rounded-xs border-2 border-zinc-700 hover:bg-secondary transition-colors">
+            <Bell size={20} className="text-zinc-400" />
+          </button>
+          <button className="p-2 rounded-xs border-2 border-zinc-700 hover:bg-secondary transition-colors">
+            <FileText size={20} className="text-zinc-400" />
+          </button>
+          <button className="p-2 rounded-xs border-2 border-zinc-700 hover:bg-secondary transition-colors">
+            <HelpCircle size={20} className="text-zinc-400" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-6 border">
+          <div className="px-6 py-6 flex items-center justify-between">
+            <h1 className="text-3xl ">Test Suite</h1>
+            <div className="flex items-center gap-2">
               <button
                 onClick={() => setTestEditorOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:bg-secondary transition-colors text-foreground text-sm"
+                className="flex items-center gap-2 px-4 py-1 bg-[#333333] rounded-xs border-2 border-zinc-700 hover:bg-secondary transition-colors text-foreground "
               >
-                <Monitor size={16} />
+                <ChartLine size={19} />
                 Live monitor
               </button>
               <button
                 onClick={() => setCreateTestOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:opacity-90 transition-opacity font-medium text-sm"
+                className="flex items-center gap-2 px-4 py-1 bg-linear-to-b from-[#A36BFF] to-[#4E3EFF] border-2 border-zinc-600 text-accent-foreground rounded-xs hover:opacity-90 transition-opacity  "
               >
-                <Plus size={16} />
+                <Plus size={19} />
                 Create test
               </button>
             </div>
           </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6 space-y-6">
-          {/* Stats Cards */}
-          <StatsCards />
-
-          {/* Test Table */}
-          <TestTable />
+          <div className="px-6">
+            <div className="border-2">
+              <StatsCards />
+              <div className="px-3 py-2">
+                <TestTable />
+              </div>
+            </div>
+          </div>
         </div>
       </main>
 
@@ -57,6 +65,6 @@ export default function Home() {
 
       {/* Test Editor Panel */}
       <TestEditorPanel isOpen={testEditorOpen} onClose={() => setTestEditorOpen(false)} />
-    </div>
+    </>
   )
 }
