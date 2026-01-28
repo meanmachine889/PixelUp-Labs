@@ -1,6 +1,7 @@
 'use client'
 
 import React from "react"
+import Link from "next/link"
 import { Home, Users, Settings, ChevronsLeft, ChevronsUpDown, FlaskConical, GitPullRequest, Box, Flame, KeyRound } from 'lucide-react'
 
 interface SidebarProps {
@@ -64,11 +65,11 @@ export function Sidebar({ isCollapsed = false, onToggle }: SidebarProps) {
           {!isCollapsed && (
             <div className="text-sm py-2 opacity-60">E2E Testing</div>
           )}
-          <nav className="space-y-1 border-b-2 py-2">
-            <NavItem icon={Home} label="Dashboard" active={false} collapsed={isCollapsed} />
-            <NavItem icon={FlaskConical} label="Test Suite" active={true} collapsed={isCollapsed} />
-            <NavItem icon={GitPullRequest} label="Workflow" active={false} collapsed={isCollapsed} />
-            <NavItem icon={Box} label="Builds" active={false} collapsed={isCollapsed} />
+          <nav className={`border-b-2 py-2 ${isCollapsed ? 'space-y-4' : 'space-y-1'}`}>
+            <NavItem icon={Home} label="Dashboard" href="/" active={false} collapsed={isCollapsed} />
+            <NavItem icon={FlaskConical} label="Test Suite" href="/" active={true} collapsed={isCollapsed} />
+            <NavItem icon={GitPullRequest} label="Workflow" href="/" active={false} collapsed={isCollapsed} />
+            <NavItem icon={Box} label="Builds" href="/" active={false} collapsed={isCollapsed} />
           </nav>
         </div>
 
@@ -76,13 +77,13 @@ export function Sidebar({ isCollapsed = false, onToggle }: SidebarProps) {
           {!isCollapsed && (
             <div className="text-sm py-2 opacity-60">Organisation</div>
           )}
-          <nav className="space-y-1 border-b-2 py-2">
-            <NavItem icon={Users} label="Users" active={false} collapsed={isCollapsed} />
-            <NavItem icon={KeyRound} label="API" active={false} collapsed={isCollapsed} />
+          <nav className={`border-b-2 py-2 ${isCollapsed ? 'space-y-4' : 'space-y-1'}`}>
+            <NavItem icon={Users} label="Users" href="/" active={false} collapsed={isCollapsed} />
+            <NavItem icon={KeyRound} label="API" href="/" active={false} collapsed={isCollapsed} />
           </nav>
         </div>
 
-        <NavItem icon={Settings} label="Settings" active={false} collapsed={isCollapsed} />
+        <NavItem icon={Settings} label="Settings" href="/" active={false} collapsed={isCollapsed} />
       </div>
 
       {!isCollapsed && (
@@ -112,15 +113,17 @@ export function Sidebar({ isCollapsed = false, onToggle }: SidebarProps) {
 interface NavItemProps {
   icon: React.ComponentType<{ size?: number; className?: string }>
   label: string
+  href: string
   active?: boolean
   collapsed?: boolean
 }
 
-function NavItem({ icon: Icon, label, active, collapsed }: NavItemProps) {
+function NavItem({ icon: Icon, label, href, active, collapsed }: NavItemProps) {
   return (
-    <div
-      className={`flex items-center text-sm gap-3 px-1 py-1 w-full cursor-pointer transition-colors ${
-        collapsed ? 'justify-center' : ''
+    <Link
+      href={href}
+      className={`flex items-center text-sm gap-3 w-full cursor-pointer transition-colors ${
+        collapsed ? 'justify-center px-2 py-2' : 'px-1 py-2'
       } ${
         active
           ? 'bg-sidebar-accent text-sidebar-foreground'
@@ -130,6 +133,6 @@ function NavItem({ icon: Icon, label, active, collapsed }: NavItemProps) {
     >
       <Icon size={18} />
       {!collapsed && <span>{label}</span>}
-    </div>
+    </Link>
   )
 }
