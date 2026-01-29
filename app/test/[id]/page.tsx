@@ -282,7 +282,7 @@ export default function TestEditorPage() {
           </div>
         </div>
 
-        <div className="w-[700px] min-w-[50%] bg-background flex flex-col">
+        <div className="w-175 min-w-[50%] bg-background flex flex-col">
           <div className="px-6 py-4 flex h-15 items-center justify-between border-b-2 border-sidebar-border">
             <span className="text-sm text-muted-foreground">Playground</span>
             <div className="flex items-center gap-2">
@@ -299,7 +299,7 @@ export default function TestEditorPage() {
           </div>
 
           <div className="flex-1 flex items-center justify-center p-6">
-            <div className="w-[330px]">
+            <div className="w-82.5">
               <Iphone />
             </div>
           </div>
