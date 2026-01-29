@@ -40,15 +40,15 @@ export function StatsCards() {
     <div className="grid grid-cols-4">
       {stats.map((stat) => (
         <CornerBorderCard key={stat.title}>
-          <div className="p-4">
-            <div className="flex items-center gap-2 mb-5">
-              <span className="text-sm text-muted-foreground">{stat.title}</span>
-              <Info size={16} className="text-muted-foreground opacity-60" />
+          <div className="p-3">
+            <div className="flex items-center gap-1.5 mb-4">
+              <span className="text-xs text-muted-foreground">{stat.title}</span>
+              <Info size={14} className="text-muted-foreground opacity-60" />
             </div>
-            <div className="text-3xl  text-foreground mb-1">{stat.value}</div>
-            <div className={`text-sm flex items-center`}>
-              {stat.changeType === 'positive' && <ChevronsUp size={14} className="text-green-700 -mr-0.1" />}
-              {stat.changeType === 'negative' && <ChevronsDown size={14} className="text-green-700 -mr-0.1" />}
+            <div className="text-2xl text-foreground mb-0.5">{stat.value}</div>
+            <div className={`text-xs flex items-center`}>
+              {stat.changeType === 'positive' && <ChevronsUp size={12} className="text-green-700 -mr-0.1" />}
+              {stat.changeType === 'negative' && <ChevronsDown size={12} className="text-green-700 -mr-0.1" />}
               <p className="text-green-700">
                 {stat.change}
               </p>

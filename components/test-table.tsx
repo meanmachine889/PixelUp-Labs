@@ -8,28 +8,28 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Search, Filter, RefreshCcw, Play, MoreHorizontal, ChevronsUpDown, Loader, Check, X, Ban, Apple, Globe, Triangle, ExternalLink, Pencil, ArrowUpRight, ListFilter } from 'lucide-react'
+import { Search, Filter, RefreshCcw, Play, MoreHorizontal, ChevronsUpDown, Loader, Check, X, Ban, Apple, Globe, Triangle, ExternalLink, Pencil, ArrowUpRight, ListFilter, CircleDashed } from 'lucide-react'
 import { useState } from 'react'
 
 interface TestRow {
   id: string
   timestamp: string
   name: string
-  status: 'success' | 'failed' | 'pending' | 'banned'
+  status: 'success' | 'failed' | 'pending' | 'banned' | 'banned-dashed'
   platform: 'iOS' | 'Web' | 'Android'
   build: string
   lastRun: string
 }
 
 const testData: TestRow[] = [
-  { id: '1', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'pending', platform: 'iOS', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
-  { id: '2', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'success', platform: 'Web', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
-  { id: '3', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'success', platform: 'Android', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
-  { id: '4', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'banned', platform: 'iOS', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
+  { id: '1', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder 1/3', status: 'success', platform: 'iOS', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
+  { id: '2', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'pending', platform: 'Web', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
+  { id: '3', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'pending', platform: 'Android', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
+  { id: '4', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'pending', platform: 'iOS', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
   { id: '5', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'failed', platform: 'Android', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
-  { id: '6', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'pending', platform: 'iOS', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
-  { id: '7', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'success', platform: 'Android', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
-  { id: '8', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'success', platform: 'Android', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
+  { id: '6', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'banned-dashed', platform: 'iOS', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
+  { id: '7', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'pending', platform: 'Android', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
+  { id: '8', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'pending', platform: 'Android', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
   { id: '9', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'banned', platform: 'Web', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
   { id: '10', timestamp: 'Aug 20, 11:38 AM', name: 'Placeholder', status: 'failed', platform: 'iOS', build: 'None', lastRun: 'Aug 20, 11:38 AM' },
 ]
@@ -38,26 +38,26 @@ export function TestTable() {
   const [searchQuery, setSearchQuery] = useState('')
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       {/* Search and Filter */}
-      <div className="flex items-center justify-between gap-4 py-2">
-        <div className="flex items-center border-2 h-14 border-sidebar-border max-w-[30%] px-3 py-2 flex-1">
-          <Search size={19} className="text-muted-foreground" />
+      <div className="flex items-center justify-between gap-3 py-1.5">
+        <div className="flex items-center border-2 h-11 border-sidebar-border max-w-[30%] px-2.5 py-1.5 flex-1">
+          <Search size={16} className="text-muted-foreground" />
           <input
             type="text"
             placeholder="Placeholder"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 ml-2 bg-transparent outline-none text-foreground "
+            className="flex-1 ml-2 bg-transparent outline-none text-foreground text-sm"
           />
-          <kbd className="text-xs bg-zinc-800 border border-zinc-700 px-2 py-1 rounded-xs">⌘ K</kbd>
+          <kbd className="text-xs bg-zinc-800 border border-zinc-700 px-1.5 py-1 rounded-xs">⌘ K</kbd>
         </div>
-        <div className="flex gap-2">
-          <button className="flex items-center gap-2 px-3 rounded-xs py-1 bg-zinc-800 border border-zinc-700 hover:bg-secondary transition-colors text-foreground text-sm">
-            <RefreshCcw size={16} />
+        <div className="flex gap-1.5">
+          <button className="flex items-center gap-1.5 px-2 rounded-xs py-2 bg-zinc-800 border border-zinc-700 hover:bg-secondary transition-colors text-foreground text-xs">
+            <RefreshCcw size={14} />
           </button>
-          <button className="flex items-center gap-2 px-4 rounded-xs py-1 bg-zinc-800 border border-zinc-700 hover:bg-secondary transition-colors text-foreground">
-            <ListFilter size={14} />
+          <button className="flex items-center gap-1.5 px-2 rounded-xs py-2 bg-zinc-800 border border-zinc-700 hover:bg-secondary transition-colors text-foreground text-xs">
+            <ListFilter size={12} />
             Filter
           </button>
         </div>
@@ -68,57 +68,57 @@ export function TestTable() {
         <Table>
           <TableHeader className="bg-[#ffffff]/6 border-b-2 border-zinc-800">
             <TableRow className="hover:bg-zinc-800">
-              <TableHead className="px-4 py-3 text-left text-muted-foreground font-medium w-[30%]">Test Name</TableHead>
-              <TableHead className="px-4 py-3 text-left text-muted-foreground font-medium">
-                <button className="flex items-center gap-2 hover:text-foreground transition-colors">
+              <TableHead className="px-3 py-2 text-left text-muted-foreground font-medium text-xs w-[30%]">Test Name</TableHead>
+              <TableHead className="px-3 py-2 text-left text-muted-foreground font-medium text-xs">
+                <button className="flex items-center gap-1.5 hover:text-foreground transition-colors">
                   Status
-                  <ChevronsUpDown className="h-4 w-4" />
+                  <ChevronsUpDown className="h-3.5 w-3.5" />
                 </button>
               </TableHead>
-              <TableHead className="px-4 py-3 text-left text-muted-foreground font-medium">
-                <button className="flex items-center gap-2 hover:text-foreground transition-colors">
+              <TableHead className="px-3 py-2 text-left text-muted-foreground font-medium text-xs">
+                <button className="flex items-center gap-1.5 hover:text-foreground transition-colors">
                   Platform
-                  <ChevronsUpDown className="h-4 w-4" />
+                  <ChevronsUpDown className="h-3.5 w-3.5" />
                 </button>
               </TableHead>
-              <TableHead className="px-4 py-3 text-center text-muted-foreground w-[15%] font-medium">Build</TableHead>
-              <TableHead className="px-4 py-3 text-center text-muted-foreground font-medium">
-                <button className="flex items-center gap-2 hover:text-foreground transition-colors">
+              <TableHead className="px-3 py-2 text-center text-muted-foreground w-[15%] font-medium text-xs">Build</TableHead>
+              <TableHead className="px-3 py-2 text-center text-muted-foreground font-medium text-xs">
+                <button className="flex items-center gap-1.5 hover:text-foreground transition-colors">
                   Last Run
-                  <ChevronsUpDown className="h-4 w-4" />
+                  <ChevronsUpDown className="h-3.5 w-3.5" />
                 </button>
               </TableHead>
-              <TableHead className="px-4 py-3 text-right text-muted-foreground font-medium"></TableHead>
+              <TableHead className="px-3 py-2 text-right text-muted-foreground font-medium"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {testData.map((row) => (
               <TableRow key={row.id} className="group border-b border-border hover:bg-zinc-800 transition-colors">
-                <TableCell className="px-4 py-3">
-                  <div className="font-medium text-foreground">{row.timestamp}</div>
+                <TableCell className="px-3 py-2">
+                  <div className=" text-foreground text-sm">{row.timestamp}</div>
                 </TableCell>
-                <TableCell className="px-4 py-3">
-                  <StatusBadge status={row.status} />
+                <TableCell className="px-3 py-2">
+                  <StatusBadge status={row.status} name={row.name} />
                 </TableCell>
-                <TableCell className="px-4 py-3">
+                <TableCell className="px-3 py-2">
                   <PlatformBadge platform={row.platform} />
                 </TableCell>
-                <TableCell className="px-4 py-3 text-center text-zinc-500">{row.build}</TableCell>
-                <TableCell className="px-4 py-3 text-zinc-500">{row.lastRun}</TableCell>
-                <TableCell className="px-4 py-3 text-right">
-                  <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-foreground border border-zinc-700 transition-colors">
+                <TableCell className="px-3 py-2 text-center text-zinc-500 text-sm">{row.build}</TableCell>
+                <TableCell className="px-3 py-2 text-zinc-500 text-sm">{row.lastRun}</TableCell>
+                <TableCell className="px-3 py-2 text-right">
+                  <div className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button className="flex items-center gap-1 px-2.5 py-1 text-xs text-foreground border border-zinc-700 transition-colors">
                       View runs
-                      <ArrowUpRight size={16} />
+                      <ArrowUpRight size={14} />
                     </button>
-                    <button className="p-1.5 hover:bg-zinc-700 border border-zinc-700 text-zinc-200  hover:text-foreground transition-colors" title="Edit">
-                      <Pencil size={16} />
+                    <button className="p-1 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 hover:text-foreground transition-colors" title="Edit">
+                      <Pencil size={14} />
                     </button>
-                    <button className="p-1.5 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 hover:text-foreground transition-colors" title="Run">
-                      <Play size={16} />
+                    <button className="p-1 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 hover:text-foreground transition-colors" title="Run">
+                      <Play size={14} />
                     </button>
-                    <button className="p-1.5 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 hover:text-foreground transition-colors" title="More options">
-                      <MoreHorizontal size={16} />
+                    <button className="p-1 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 hover:text-foreground transition-colors" title="More options">
+                      <MoreHorizontal size={14} />
                     </button>
                   </div>
                 </TableCell>
@@ -132,29 +132,33 @@ export function TestTable() {
 }
 
 interface StatusBadgeProps {
-  status: 'success' | 'failed' | 'pending' | 'banned'
+  status: 'success' | 'failed' | 'pending' | 'banned' | 'banned-dashed'
+  name: string
 }
 
-function StatusBadge({ status }: StatusBadgeProps) {
-  const baseClasses = 'inline-flex items-center gap-1 px-2 py-1 text-sm font-medium'
-  const statusClasses = {
+function StatusBadge({ status, name }: StatusBadgeProps) {
+  const baseClasses = 'inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-medium'
+  const statusClasses: Record<string, string> = {
     success: 'bg-accent/20 text-accent',
     failed: 'bg-destructive/20 text-red-500/70',
     pending: 'bg-purple-500/20 text-purple-500',
     banned: 'bg-[#333333] text-gray-400',
+    'banned-dashed': 'bg-[#333333] text-gray-400',
   }
 
-  const icons = {
-    success: <Check size={12} />,
-    failed: <Loader size={12} />,
-    pending: <X size={12} />,
-    banned: <Ban size={12} />,
+  const icons: Record<string, React.ReactNode> = {
+    success: <Loader size={10} />,
+    failed: <X size={10} />,
+    pending: <Check size={10} />,
+    banned: <Ban size={10} />,
+    'banned-dashed': <CircleDashed size={10} />,
   }
+
 
   return (
     <div className={`${baseClasses} ${statusClasses[status]}`}>
       <span>{icons[status]}</span>
-      <span>Placeholder</span>
+      <span>{name}</span>
     </div>
   )
 }
@@ -191,9 +195,9 @@ function PlatformBadge({ platform }: PlatformBadgeProps) {
   }
 
   return (
-    <div className="flex items-center gap-1 text-zinc-400 rounded-xs bg-[#333333] text-xs px-2 py-1 w-fit">
+    <div className="flex items-center gap-1 text-zinc-400 rounded-xs bg-[#333333] text-xs px-1.5 py-0.5 w-fit">
       <span>{platformIcons[platform]}</span>
-      <span className='text-sm'>{platform}</span>
+      <span className='text-xs'>{platform}</span>
     </div>
   )
 }
