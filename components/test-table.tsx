@@ -41,16 +41,16 @@ export function TestTable() {
     <div className="space-y-1.5">
       {/* Search and Filter */}
       <div className="flex items-center justify-between gap-3 py-1.5">
-        <div className="flex items-center border-2 h-11 border-sidebar-border max-w-[30%] px-2.5 py-1.5 flex-1">
-          <Search size={16} className="text-muted-foreground" />
+        <div className="flex items-center border-2 h-11 border-sidebar-border max-w-[50%] lg:max-w-[30%] px-2.5 py-1.5 flex-1 min-w-0">
+          <Search size={16} className="text-muted-foreground shrink-0" />
           <input
             type="text"
             placeholder="Placeholder"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 ml-2 bg-transparent outline-none text-foreground text-sm"
+            className="flex-1 ml-2 bg-transparent outline-none text-foreground text-sm min-w-0"
           />
-          <kbd className="text-xs bg-zinc-800 border border-zinc-700 px-1.5 py-1 rounded-xs">⌘ K</kbd>
+          <kbd className="text-xs bg-zinc-800 border border-zinc-700 px-1.5 py-1 rounded-xs shrink-0 hidden lg:block">⌘ K</kbd>
         </div>
         <div className="flex gap-1.5">
           <button className="flex items-center gap-1.5 px-2 rounded-xs py-2 bg-zinc-800 border border-zinc-700 hover:bg-secondary transition-colors text-foreground text-xs">
@@ -64,8 +64,8 @@ export function TestTable() {
       </div>
 
       {/* Table */}
-      <div className="border-2 border-sidebar-border overflow-hidden mb-1">
-        <Table>
+      <div className="border-2 border-sidebar-border overflow-x-auto mb-1">
+        <Table className="min-w-[800px]">
           <TableHeader className="bg-[#ffffff]/6 border-b-2 border-zinc-800">
             <TableRow className="hover:bg-zinc-800">
               <TableHead className="px-3 py-2 text-left text-muted-foreground font-medium text-xs w-[30%]">Test Name</TableHead>

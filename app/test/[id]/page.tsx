@@ -10,38 +10,38 @@ export default function TestEditorPage() {
   return (
     <div className="w-full bg-background overflow-y-auto">
       <div className="border-b-2 border-sidebar-border bg-background h-16 sticky top-0 z-40">
-        <div className="px-5 py-3 flex items-center justify-between">
-          <div className="flex-1">
+        <div className="px-5 py-3 flex items-center justify-between gap-4">
+          <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1.5 mb-0.5">
-              <h1 className="text-base font-medium text-white">Candle login (iOS) (one step)</h1>
+              <h1 className="text-base font-medium text-white truncate">Candle login (iOS) (one step)</h1>
               <button className="text-muted-foreground hover:text-foreground">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                 </svg>
               </button>
             </div>
-            <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
+            <div className="flex items-center gap-1 text-[11px] text-muted-foreground flex-wrap">
               <span>Platform</span>
               <span className="text-white">iOS</span>
-              <span className="mx-1.5">|</span>
-              <span>Website:</span>
-              <span className="text-white">http://pixelup.in</span>
-              <span className="mx-1.5">|</span>
-              <span>Schedule:</span>
-              <span className="text-white">None</span>
-              <span className="mx-1.5">|</span>
-              <span>ID:</span>
-              <span className="text-white">None</span>
+              <span className="mx-1.5 hidden lg:inline">|</span>
+              <span className="hidden lg:inline">Website:</span>
+              <span className="text-white hidden lg:inline">http://pixelup.in</span>
+              <span className="mx-1.5 hidden xl:inline">|</span>
+              <span className="hidden xl:inline">Schedule:</span>
+              <span className="text-white hidden xl:inline">None</span>
+              <span className="mx-1.5 hidden xl:inline">|</span>
+              <span className="hidden xl:inline">ID:</span>
+              <span className="text-white hidden xl:inline">None</span>
             </div>
           </div>
-          <div className="flex items-center gap-2.5">
-            <button className="flex items-center gap-1.5 px-4 py-1.5 bg-zinc-800 border-2 border-sidebar-border rounded-sm hover:bg-[#252525] transition-colors text-white text-[13px]">
+          <div className="flex items-center gap-2.5 shrink-0">
+            <button className="flex items-center gap-1.5 px-3 lg:px-4 py-1.5 bg-zinc-800 border-2 border-sidebar-border rounded-sm hover:bg-[#252525] transition-colors text-white text-[13px]">
               <Eye size={14} />
-              Preview
+              <span className="hidden lg:inline">Preview</span>
             </button>
-            <button className="flex items-center gap-1.5 px-4 py-1.5 bg-linear-to-b from-violet-600 to-purple-900 text-white rounded-xs hover:bg-purple-700 transition-colors text-[13px]">
+            <button className="flex items-center gap-1.5 px-3 lg:px-4 py-1.5 bg-linear-to-b from-violet-600 to-purple-900 text-white rounded-xs hover:bg-purple-700 transition-colors text-[13px]">
               <Triangle size={14} className="rotate-90" />
-              Run Test
+              <span className="hidden lg:inline">Run Test</span>
             </button>
           </div>
         </div>
@@ -282,7 +282,7 @@ export default function TestEditorPage() {
           </div>
         </div>
 
-        <div className="w-175 min-w-[50%] bg-background flex flex-col">
+        <div className="w-[40%] min-w-100 max-w-175 bg-background flex flex-col">
           <div className="px-5 py-3 flex h-12 items-center justify-between border-b-2 border-sidebar-border">
             <span className="text-[13px] text-muted-foreground">Playground</span>
             <div className="flex items-center gap-1.5">

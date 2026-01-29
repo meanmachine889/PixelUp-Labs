@@ -37,7 +37,7 @@ export function StatsCards() {
   ]
 
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-2 xl:grid-cols-4">
       {stats.map((stat) => (
         <CornerBorderCard key={stat.title}>
           <div className="p-3">

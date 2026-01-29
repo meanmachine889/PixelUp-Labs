@@ -16,7 +16,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       <Sidebar isCollapsed={sidebarCollapsed} onToggle={setSidebarCollapsed} />
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="bg-background border-b-2 border-sidebar-border h-18 sticky top-0 z-10 py-4 flex items-center justify-end px-6 gap-2">
+        <div className="bg-background border-b-2 border-sidebar-border h-14 sticky top-0 z-10 py-4 flex items-center justify-end px-6 gap-2">
           <button className="p-2 rounded-xs border-2 border-zinc-700 hover:bg-secondary transition-colors">
             <Bell size={20} className="text-zinc-400" />
           </button>
