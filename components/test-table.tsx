@@ -41,7 +41,7 @@ export function TestTable() {
     <div className="space-y-2">
       {/* Search and Filter */}
       <div className="flex items-center justify-between gap-4 py-2">
-        <div className="flex items-center border-2 h-14 border-border max-w-[30%] px-3 py-2 flex-1">
+        <div className="flex items-center border-2 h-14 border-sidebar-border max-w-[30%] px-3 py-2 flex-1">
           <Search size={19} className="text-muted-foreground" />
           <input
             type="text"
@@ -64,7 +64,7 @@ export function TestTable() {
       </div>
 
       {/* Table */}
-      <div className="border-2 border-zinc-800 overflow-hidden">
+      <div className="border-2 border-sidebar-border overflow-hidden mb-1">
         <Table>
           <TableHeader className="bg-[#ffffff]/6 border-b-2 border-zinc-800">
             <TableRow className="hover:bg-zinc-800">
